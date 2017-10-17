@@ -18,7 +18,7 @@ app.set('view engine','hbs');
 app.use((req,res,next) => {
   var now = new Date().toString();
   var log = `Inside the: ${now} reqMethod: ${req.method} requestURL${req.url} IP: ${req.ip}` ;
-  console.log(log);
+  //console.log(log);
   fs.appendFile('server.log',log + '\n', (err) => {
     if (err) {
       console.log('Unable to append to server.log');
@@ -61,6 +61,12 @@ app.get('/',(req, res)=> {
 app.get('/about',(req, res)=> {
   res.render('about.hbs',{
     pageTitle: 'About Page'
+  });
+});
+
+app.get('/project',(req, res)=> {
+  res.render('project.hbs',{
+    pageTitle: 'Project portfolio'
   });
 });
 
